@@ -1,0 +1,17 @@
+web:
+  image: 'gitlab/gitlab-ee:latest'
+  container_name: gitlab
+  restart: always
+  hostname: 'gitlab.richardsmid.com'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'https://git.ricahrdsmid.com'
+      # Add any other gitlab.rb configuration here, each on its own line
+  ports:
+    - '86:80'
+    - '447:443'
+    - '27:22'
+  volumes:
+    - '/home/richardsmid/docker/gitlab/config:/etc/gitlab'
+    - '/home/richardsmid/docker/gitlab/logs:/var/log/gitlab'
+    - '/home/richardsmid/docker/gitlab/data:/var/opt/gitlab'
